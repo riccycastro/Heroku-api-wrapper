@@ -1,0 +1,37 @@
+version: '3.0'
+
+services:
+  internations-app:
+    container_name: internations-app
+    build: .
+    environment:
+      APP_ENV: dev
+      APP_SECRET: 1a7t82xc75935d8efrc0e22a5c9b7518d
+    volumes:
+      - ./application:/var/www/html/internations-app
+    networks:
+      localnet:
+        ipv4_address: 172.49.0.4
+
+  internation-webserver:
+    container_name: internations-webserver
+    build: ./webserver
+    networks:
+      localnet:
+        ipv4_address: 172.49.0.5
+    volumes:
+      - ./application:/var/www/html/internations-app
+      - ./webserver/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./webserver/nginx/sites/:/etc/nginx/sites-available
+      - ./webserver/nginx/conf.d/:/etc/nginx/conf.d
+    ports:
+      - 80:80
+    depends_on:
+      - internations-app
+
+networks:
+  localnet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.49.0.0/16
