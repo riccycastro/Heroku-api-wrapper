@@ -2,9 +2,7 @@
 
 namespace App\Filter;
 
-use App\Filter\Interfaces\CategoryValidator;
 use App\Filter\Interfaces\IndicatorFilterInterface;
-use App\Filter\Interfaces\SubThemeValidator;
 
 class IndicatorFilter implements IndicatorFilterInterface
 {
