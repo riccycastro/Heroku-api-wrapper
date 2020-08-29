@@ -2,9 +2,10 @@
 
 namespace App\Controller;
 
-use Exception;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use App\Model\HerokuAppSearch;
+use App\Service\Interfaces\DemographicServiceInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -15,19 +16,28 @@ use Symfony\Component\Routing\Annotation\Route;
 class DemographicController
 {
     /**
-     * @Route("/data", name="get_demographics_data")
-     * @param Request $request
-     * @return Response
-     * @throws Exception
+     * @var DemographicServiceInterface
      */
-    public function dataAction(Request $request)
+    private $demographicService;
+
+    /**
+     * DemographicController constructor.
+     * @param DemographicServiceInterface $demographicService
+     */
+    public function __construct(DemographicServiceInterface $demographicService)
     {
-        var_dump($request->query);
+        $this->demographicService = $demographicService;
+    }
 
-        $number = random_int(0, 50);
-
-        return new Response(
-            '<html><body>Lucky number: '.$number.'</body></html>'
-        );
+    /**
+     * @Route("/{endpointName}", name="get_demographics_data")
+     * @ParamConverter("herokuAppSearch")
+     * @param HerokuAppSearch $herokuAppSearch
+     * @param string endpointName
+     * @return JsonResponse
+     */
+    public function indexAction(HerokuAppSearch $herokuAppSearch, string $endpointName): JsonResponse
+    {
+        return new JsonResponse($this->demographicService->getData($endpointName, $herokuAppSearch));
     }
 }
