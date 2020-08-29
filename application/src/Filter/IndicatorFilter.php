@@ -9,9 +9,7 @@ use App\Filter\Interfaces\SubThemeValidator;
 class IndicatorFilter implements IndicatorFilterInterface
 {
     /**
-     * @param array $theme
-     * @param array $indicatorIds
-     * @return MatchData|null
+     * @inheritDoc
      */
     public function applyFilter(array $theme, array $indicatorIds): ?MatchData
     {
