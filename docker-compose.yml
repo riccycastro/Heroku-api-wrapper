@@ -9,7 +9,7 @@ services:
       APP_ENV: dev
       APP_SECRET: 1a7t82xc75935d8efrc0e22a5c9b7518d
       HEROKU_APP_DOMAIN: https://python-exerc.herokuapp.com
-      HEROKU_APP_CLIENT_CACHE_TTL: 5 # seconds
+      HEROKU_APP_CLIENT_CACHE_TTL: 10 # seconds
     volumes:
       - ./application:/var/www/html/internations-app
     networks:

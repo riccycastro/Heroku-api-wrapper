@@ -53,7 +53,6 @@ class HttpClientFactory
     {
         $stack = HandlerStack::create();
 
-
         $cache_storage = new Psr6CacheStorage(
             new FilesystemAdapter(
                 '',

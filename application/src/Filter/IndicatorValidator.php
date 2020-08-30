@@ -10,7 +10,7 @@ class IndicatorValidator extends AbstractValidator
     }
 
     /**
-     * @param array $data           data here is category array item
+     * @param array $data data here is category array item
      * @param array $indicatorIds
      * @return MatchData|null
      */
