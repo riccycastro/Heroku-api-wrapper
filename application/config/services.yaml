@@ -36,6 +36,12 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
-    App\Service\Interface\DemographicServiceInterface: '@App\Service\DemographicService'
-    App\Service\Interface\HerokuAppClientInterface: '@App\Service\HerokuAppClient'
-    App\Filter\Interface\IndicatorFilterInterface: '@App\Filter\IndicatorFilter'
+    App\EventListener\ExceptionListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception }
+        arguments:
+            - '%env(APP_ENV)%'
+
+    App\Service\Interfaces\DemographicServiceInterface: '@App\Service\DemographicService'
+    App\Service\Interfaces\HerokuAppClientInterface: '@App\Service\HerokuAppClient'
+    App\Filter\Interfaces\IndicatorFilterInterface: '@App\Filter\IndicatorFilter'

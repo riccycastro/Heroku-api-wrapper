@@ -2,6 +2,7 @@
 
 namespace App\HttpException;
 
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Throwable;
 
@@ -15,6 +16,6 @@ class InternalServerErrorHttpException extends HttpException
      */
     public function __construct(string $message = 'Internal server error', Throwable $previous = null, int $code = 0, array $headers = [])
     {
-        parent::__construct(505, $message, $previous, $headers, $code);
+        parent::__construct(Response::HTTP_INTERNAL_SERVER_ERROR, $message, $previous, $headers, $code);
     }
 }

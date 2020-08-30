@@ -45,7 +45,7 @@ class HerokuAppClientTest extends TestCase
             ->getMock();
 
         $httpClientFactory->method('makeHttpClient')->willReturn($this->httpClient);
-        $container->method('getParameter')->willReturn('phake/path/to/store/location');
+        $container->method('getParameter')->willReturn('tests/phake/path/to/store/location');
 
         $this->herokuAppClient = new HerokuAppClient(
             'http:\\\\client.phake-domain.local',
@@ -85,7 +85,7 @@ class HerokuAppClientTest extends TestCase
     {
         $this->expectException(InternalServerErrorHttpException::class);
 
-        // we need to do this because when we call the method getContents from response, it erase the content
+        // we need to do this because when we call the method getContents from response, it erases the content
         $guzzleResponse1 = new Response(
             200,
             [],

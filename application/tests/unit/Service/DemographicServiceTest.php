@@ -51,7 +51,7 @@ class DemographicServiceTest extends TestCase
         $this->setHandleGetDataReturn();
 
         $this->assertEquals(
-            PayloadReaderTest::loadHerokuResponseData(),
+            PayloadReaderTest::loadHerokuResponseArray(),
             $this->demographicService->getData('', $herokuAppSearch)
         );
     }
@@ -114,7 +114,7 @@ class DemographicServiceTest extends TestCase
     private function setHandleGetDataReturn()
     {
         $this->herokuAppClient->method('handleGetData')->willReturn(
-            PayloadReaderTest::loadHerokuResponseData()
+            PayloadReaderTest::loadHerokuResponseArray()
         );
     }
 }

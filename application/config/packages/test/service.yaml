@@ -1,0 +1,23 @@
+parameters:
+  cache_store_location: 'tests/phake/path/to/store/location'
+
+services:
+#    bind:
+#      $herokuAppClientCacheTTL: 3
+
+    factory.client.http:
+        class: App\Service\Factory\HttpClientFactory
+        decorates: App\Service\Factory\HttpClientFactory
+        public: true
+        arguments:
+          - '@service_container'
+          - '5'
+
+    client.app.heroku:
+        class: App\Service\HerokuAppClient
+        decorates: App\Service\HerokuAppClient
+        public: true
+        arguments:
+          - 'phake.domain.local'
+          - '@factory.client.http'
+          - '@service_container'

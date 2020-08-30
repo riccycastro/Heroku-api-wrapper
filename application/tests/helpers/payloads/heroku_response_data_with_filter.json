@@ -1,0 +1,75 @@
+[
+  {
+    "id": 2,
+    "name": "Demographics",
+    "sub_themes": [
+      {
+        "categories": [
+          {
+            "id": 11,
+            "indicators": [
+              {
+                "id": 1,
+                "name": "total"
+              }
+            ],
+            "name": "Crude death rate",
+            "unit": "(deaths per 1000 people)"
+          }
+        ],
+        "id": 4,
+        "name": "Births and Deaths"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Jobs",
+    "sub_themes": [
+      {
+        "categories": [
+          {
+            "id": 23,
+            "indicators": [
+              {
+                "id": 31,
+                "name": "Total"
+              },
+              {
+                "id": 32,
+                "name": "Female"
+              }
+            ],
+            "name": "Unemployment rate, 15–24 years, usual",
+            "unit": "(percent of labor force)"
+          }
+        ],
+        "id": 8,
+        "name": "Unemployment"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Environment",
+    "sub_themes": [
+      {
+        "categories": [
+          {
+            "id": 131,
+            "indicators": [
+              {
+                "id": 362,
+                "name": "Total"
+              }
+            ],
+            "name": "Aerosol optical thickness",
+            "unit": "(thickness scale  0–1)"
+          }
+        ],
+        "id": 42,
+        "name": "Pollution"
+      }
+    ]
+  }
+]
