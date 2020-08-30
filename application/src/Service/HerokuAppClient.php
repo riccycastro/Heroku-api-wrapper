@@ -71,24 +71,28 @@ class HerokuAppClient implements HerokuAppClientInterface
                     throw new NotFoundHttpException("Route not found for \"/$endpointName\"");
                 }
             }
-            if ($response->getStatusCode() === Response::HTTP_OK) {
-                try {
-                    $responseData = \GuzzleHttp\json_decode($response->getBody()->getContents(), true);
 
-                    if (!isset($responseData["status_code"]) && is_array($responseData)) {
-                        return $responseData;
-                    }
+            if ($response->getStatusCode() !== Response::HTTP_OK) {
+                continue;
+            }
 
-                    // at this stage if the response has the header age
-                    // it means that we have cached an "infernal server error"
-                    // so we need to clear it
-                    if ($response->hasHeader('age')) {
-                        $this->clearCache();
-                    }
+            $responseData = null;
 
-                } catch (Exception $e) {
-                    throw new InternalServerErrorHttpException();
-                }
+            try {
+                $responseData = \GuzzleHttp\json_decode($response->getBody()->getContents(), true);
+            } catch (Exception $e) {
+                throw new InternalServerErrorHttpException();
+            }
+
+            if (!isset($responseData['status_code']) && is_array($responseData)) {
+                return $responseData;
+            }
+
+            // at this stage if the response has the header age
+            // it means that we have cached an "infernal server error"
+            // so we need to clear it
+            if ($response->hasHeader('age')) {
+                $this->clearCache();
             }
         }
 
