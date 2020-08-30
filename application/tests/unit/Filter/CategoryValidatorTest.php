@@ -2,9 +2,9 @@
 
 namespace App\Tests\Filter;
 
-use App\Filter\AbstractValidator;
-use App\Filter\CategoryValidator;
-use App\Filter\MatchData;
+use App\Filter\Validator\AbstractValidator;
+use App\Filter\Validator\CategoryValidator;
+use App\Model\MatchData;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

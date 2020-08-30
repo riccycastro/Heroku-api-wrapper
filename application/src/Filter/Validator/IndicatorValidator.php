@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Filter;
+namespace App\Filter\Validator;
+
+use App\Model\MatchData;
 
 class IndicatorValidator extends AbstractValidator
 {

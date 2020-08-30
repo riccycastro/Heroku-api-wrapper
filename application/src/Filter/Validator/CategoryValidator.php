@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filter;
+namespace App\Filter\Validator;
 
 class CategoryValidator extends AbstractValidator
 {

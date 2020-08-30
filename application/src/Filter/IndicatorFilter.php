@@ -3,6 +3,10 @@
 namespace App\Filter;
 
 use App\Filter\Interfaces\IndicatorFilterInterface;
+use App\Filter\Validator\CategoryValidator;
+use App\Filter\Validator\IndicatorValidator;
+use App\Filter\Validator\SubThemeValidator;
+use App\Model\MatchData;
 
 class IndicatorFilter implements IndicatorFilterInterface
 {

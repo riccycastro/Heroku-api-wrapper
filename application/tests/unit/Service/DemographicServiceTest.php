@@ -3,8 +3,8 @@
 namespace App\Tests\Service;
 
 use App\Filter\IndicatorFilter;
-use App\Filter\MatchData;
 use App\Model\HerokuAppSearch;
+use App\Model\MatchData;
 use App\Service\DemographicService;
 use App\Service\HerokuAppClient;
 use App\Tests\Helpers\PayloadReaderTest;

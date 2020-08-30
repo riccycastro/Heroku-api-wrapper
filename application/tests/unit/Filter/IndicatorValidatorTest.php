@@ -2,8 +2,8 @@
 
 namespace App\Tests\Filter;
 
-use App\Filter\IndicatorValidator;
-use App\Filter\MatchData;
+use App\Filter\Validator\IndicatorValidator;
+use App\Model\MatchData;
 use PHPUnit\Framework\TestCase;
 
 class IndicatorValidatorTest extends TestCase

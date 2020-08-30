@@ -2,7 +2,7 @@
 
 namespace App\Filter\Interfaces;
 
-use App\Filter\MatchData;
+use App\Model\MatchData;
 
 interface IndicatorFilterInterface
 {
