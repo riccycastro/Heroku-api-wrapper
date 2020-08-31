@@ -28,8 +28,9 @@ class ExceptionListener
             'detail' => 'internal server error',
         ];
 
-        if (!($exception instanceof HttpException)) {
+        if (!$exception instanceof HttpException) {
             $event->setResponse(new JsonResponse($responseData, Response::HTTP_INTERNAL_SERVER_ERROR));
+            return;
         }
 
         $responseData = [
