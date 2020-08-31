@@ -18,4 +18,8 @@ RUN ["chmod", "+x", "/entrypoint.sh"]
 
 WORKDIR /var/www/html/internations-app
 
+ENTRYPOINT ["/entrypoint.sh"]
+
 EXPOSE 9000
+
+CMD ["php-fpm"]
