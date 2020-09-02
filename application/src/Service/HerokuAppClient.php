@@ -72,27 +72,25 @@ class HerokuAppClient implements HerokuAppClientInterface
                 }
             }
 
-            if ($response->getStatusCode() !== Response::HTTP_OK) {
-                continue;
-            }
+            if ($response->getStatusCode() === Response::HTTP_OK) {
+                $responseData = null;
 
-            $responseData = null;
+                try {
+                    $responseData = \GuzzleHttp\json_decode($response->getBody()->getContents(), true);
+                } catch (Exception $e) {
+                    throw new InternalServerErrorHttpException();
+                }
 
-            try {
-                $responseData = \GuzzleHttp\json_decode($response->getBody()->getContents(), true);
-            } catch (Exception $e) {
-                throw new InternalServerErrorHttpException();
-            }
+                if (!isset($responseData['status_code']) && is_array($responseData)) {
+                    return $responseData;
+                }
 
-            if (!isset($responseData['status_code']) && is_array($responseData)) {
-                return $responseData;
-            }
-
-            // at this stage if the response has the header age
-            // it means that we have cached an "infernal server error"
-            // so we need to clear it
-            if ($response->hasHeader('age')) {
-                $this->clearCache();
+                // at this stage if the response has the header age
+                // it means that we have cached an "infernal server error"
+                // so we need to clear it
+                if ($response->hasHeader('age')) {
+                    $this->clearCache();
+                }
             }
         }
 
