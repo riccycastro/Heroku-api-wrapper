@@ -1,7 +1,6 @@
-# Internations task
+# Heroku API wrapper
 
-Within the scope of the task proposed by internations company, 
-the internations-task purpose is to deliver the best version of an API(Heroku-app), 
+The purpose is to deliver the best version of an API(Heroku-app), 
 respecting the restful API standards and providing a way to filter the data that 
 are returned
 ____
