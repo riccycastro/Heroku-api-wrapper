@@ -3,6 +3,17 @@
 The purpose is to deliver the best version of an API(Heroku-app), 
 respecting the restful API standards and providing a way to filter the data that 
 are returned
+
+#### The problem
+We want to serve our clients with an admirable service: fetch, filter and properly return a
+bunch of KPIs from the ugly upstream service.
+The upstream spills out something that could be interpreted as an application/json
+response and (thank god!) they shared a status code! Just don't assume it will always
+return the same data. And because the KPIs can be updated somewhere in the future
+without notice don't bother caching it..
+We've noticed it doesn't always return a 200 status. In that case we should not let our
+clients down! We must keep on trying before (eventually) tell our clients the data is
+unavailable.
 ____
 
 ### Docker setup
